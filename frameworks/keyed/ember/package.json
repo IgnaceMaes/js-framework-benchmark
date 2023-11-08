@@ -37,6 +37,7 @@
     "@embroider/core": "^2.0.2",
     "@embroider/webpack": "^2.0.2",
     "@glimmer/component": "^1.1.2",
+    "@glimmer/tracking": "^1.1.2",
     "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "3.0.0",
     "concurrently": "^7.6.0",
