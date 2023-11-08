@@ -26,7 +26,7 @@ export default class MyTable extends Component {
     const result = run(this.id);
 
     this.id = result.id;
-    this.data = result.data;
+    this.data = new TrackedArray(result.data);
     this.selected  = undefined;
   }
 
@@ -42,7 +42,7 @@ export default class MyTable extends Component {
   @action runLots() {
     const result = runLots(this.id);
 
-    this.data = result.data;
+    this.data = new TrackedArray(result.data);
     this.id = result.id;
     this.selected = undefined;
   }
