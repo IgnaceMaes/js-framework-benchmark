@@ -4,6 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { on } from '@ember/modifier';
 import { fn } from '@ember/helper';
+import { TrackedArray } from 'tracked-built-ins';
 
 import BsButton from 'ember-temp/components/bs-button';
 import {
@@ -15,11 +16,9 @@ function eq(a, b) {
 }
 
 export default class MyTable extends Component {
-  @tracked
   id = 1;
 
-  @tracked
-  data = [];
+  @tracked data = new TrackedArray([]);
 
   @tracked selected = undefined;
 
@@ -33,8 +32,7 @@ export default class MyTable extends Component {
 
   @action add() {
     const result = add(this.id, this.data);
-    this.id = result.id;
-    this.data = result.data;
+    this.id = result;
   }
 
   @action update() {
@@ -55,11 +53,11 @@ export default class MyTable extends Component {
   }
 
   @action swapRows() {
-    this.data = swapRows(this.data);
+    swapRows(this.data);
   }
 
   @action remove({id}) {
-    this.data = deleteRow(this.data, id);
+    deleteRow(this.data, id);
     this.selected = undefined;
   }
 
