@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-const {Webpack} = require('@embroider/webpack');
+const { Webpack } = require('@embroider/webpack');
 
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
@@ -15,6 +15,12 @@ module.exports = function (defaults) {
           semicolons: false,
         },
       },
+    },
+    'ember-cli-babel': {
+      disableDecoratorTransforms: true,
+    },
+    babel: {
+      plugins: [require.resolve('decorator-transforms')],
     },
   });
 
@@ -40,8 +46,8 @@ module.exports = function (defaults) {
     staticEmberSource: true,
     packagerOptions: {
       webpackConfig: {
-        mode: 'production'
-      }
-    }
+        mode: 'production',
+      },
+    },
   });
 };
